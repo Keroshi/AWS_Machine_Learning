@@ -13,3 +13,24 @@ df = pd.DataFrame(data, index=['wine1', 'wine2', 'wine3'])
 
 # Select a single row by label
 print(df.loc['wine1'])
+
+#%%
+# Select multiple rows by label
+print(df.loc[['wine1', 'wine3']])
+
+#%%
+# Select specific rows and columns
+print(df.loc[['wine1', 'wine3'], ['fixed_acidity', 'quality']])
+
+#%%
+# Select rows where 'quality' is greater than 5
+print(df.loc[df['quality'] > 5])
+
+#%%
+# Set the value of 'quality' for 'wine1' to 6
+df.loc['wine1', 'quality'] = 6
+print(df)
+
+#%%
+# Select a slice of rows and specific columns
+print(df.loc['wine1':'wine2', 'fixed_acidity':'citric_acid'])
