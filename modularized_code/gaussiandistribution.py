@@ -17,6 +17,7 @@ class Gaussian(Distribution):
     def __init__(self, mu=0, sigma=1):
 
         Distribution.__init__(self, mu, sigma)
+        self.data = []
 
     def calculate_mean(self):
 
@@ -31,9 +32,7 @@ class Gaussian(Distribution):
         """
 
         avg = 1.0 * sum(self.data) / len(self.data)
-
         self.mean = avg
-
         return self.mean
 
     def calculate_stdev(self, sample=True):
@@ -54,16 +53,13 @@ class Gaussian(Distribution):
             n = len(self.data)
 
         mean = self.mean
-
         sigma = 0
 
         for d in self.data:
             sigma += (d - mean) ** 2
 
         sigma = math.sqrt(sigma / n)
-
         self.stdev = sigma
-
         return self.stdev
 
     def read_data_file(self, file_name, sample=True):
